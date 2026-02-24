@@ -1,0 +1,25 @@
+:root { --lime: #88ff00; --dark: #0a0a0a; --gray: #1a1a1a; }
+body { background: var(--dark); color: white; font-family: sans-serif; margin: 0; overflow-x: hidden; }
+
+/* Splash Screen */
+#splash-screen { position: fixed; inset: 0; background: black; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: 0.8s; }
+.logo-text { font-size: 3rem; letter-spacing: 5px; }
+.lime { color: var(--lime); }
+.loader-bar { width: 0%; height: 3px; background: var(--lime); animation: load 2s forwards; }
+@keyframes load { to { width: 100%; } }
+.fade-out { opacity: 0; pointer-events: none; }
+
+/* Layout */
+.navbar { display: flex; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid #333; }
+.main-container { display: flex; padding: 20px; gap: 40px; justify-content: center; flex-wrap: wrap; }
+.garment-container { background: var(--gray); position: relative; width: 400px; height: 500px; border-radius: 15px; }
+#garment-base { width: 100%; height: 100%; object-fit: contain; }
+.canvas-wrapper { position: absolute; top: 20%; left: 15%; border: 1px dashed rgba(136, 255, 0, 0.2); }
+
+/* Buttons & UI */
+.tool-btn, .mockup-btn, .whatsapp-btn { width: 100%; padding: 15px; margin: 5px 0; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+.tool-btn { background: #333; color: white; }
+.mockup-btn { background: transparent; border: 1px solid var(--lime); color: var(--lime); }
+.whatsapp-btn { background: #25D366; color: white; margin-top: 20px; }
+.toggle-btn.active { background: var(--lime); color: black; }
+.final-total { font-size: 2.5rem; color: var(--lime); margin: 0; }
