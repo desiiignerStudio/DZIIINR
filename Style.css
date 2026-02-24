@@ -1,25 +1,73 @@
-:root { --lime: #88ff00; --dark: #0a0a0a; --gray: #1a1a1a; }
-body { background: var(--dark); color: white; font-family: sans-serif; margin: 0; overflow-x: hidden; }
-
-/* Splash Screen */
-#splash-screen { position: fixed; inset: 0; background: black; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: 0.8s; }
-.logo-text { font-size: 3rem; letter-spacing: 5px; }
-.lime { color: var(--lime); }
-.loader-bar { width: 0%; height: 3px; background: var(--lime); animation: load 2s forwards; }
+:root {
+  --lime: #88ff00;
+  --bg: #090909;
+  --card: #151515;
+  --text: #f4f4f4;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: radial-gradient(circle at top, #1a1a1a, #080808 45%);
+  color: var(--text);
+}
+#splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: #000;
+  display: grid;
+  place-items: center;
+  transition: opacity .6s;
+}
+#splash-screen.fade-out { opacity: 0; pointer-events: none; }
+.logo-text { letter-spacing: .3rem; font-size: 2.6rem; margin: 0; text-align: center; }
+.logo-text span { color: var(--lime); }
+.logo-container p { text-align: center; margin-top: .2rem; color: #bbb; }
+.loader-bar { width: 0; height: 3px; background: var(--lime); animation: load 1.8s forwards; }
 @keyframes load { to { width: 100%; } }
-.fade-out { opacity: 0; pointer-events: none; }
 
-/* Layout */
-.navbar { display: flex; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid #333; }
-.main-container { display: flex; padding: 20px; gap: 40px; justify-content: center; flex-wrap: wrap; }
-.garment-container { background: var(--gray); position: relative; width: 400px; height: 500px; border-radius: 15px; }
-#garment-base { width: 100%; height: 100%; object-fit: contain; }
-.canvas-wrapper { position: absolute; top: 20%; left: 15%; border: 1px dashed rgba(136, 255, 0, 0.2); }
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.4rem; border-bottom: 1px solid #2e2e2e; }
+.zar-tag { border: 1px solid var(--lime); color: var(--lime); padding: .4rem .7rem; border-radius: 999px; font-size: .85rem; }
+.main-container { display: grid; grid-template-columns: minmax(320px, 640px) minmax(320px, 420px); gap: 1.2rem; padding: 1.2rem; }
 
-/* Buttons & UI */
-.tool-btn, .mockup-btn, .whatsapp-btn { width: 100%; padding: 15px; margin: 5px 0; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-.tool-btn { background: #333; color: white; }
-.mockup-btn { background: transparent; border: 1px solid var(--lime); color: var(--lime); }
-.whatsapp-btn { background: #25D366; color: white; margin-top: 20px; }
-.toggle-btn.active { background: var(--lime); color: black; }
-.final-total { font-size: 2.5rem; color: var(--lime); margin: 0; }
+.studio-panel, .controls { background: var(--card); border: 1px solid #262626; border-radius: 14px; padding: 1rem; }
+.view-switcher { display: flex; gap: .5rem; margin-bottom: .8rem; }
+.toggle-btn { flex: 1; padding: .65rem; background: #252525; border: 1px solid #333; color: #fff; border-radius: 8px; cursor: pointer; }
+.toggle-btn.active { background: var(--lime); color: #000; font-weight: 700; }
+
+.garment-container { position: relative; height: 560px; border-radius: 16px; background: #101010; overflow: hidden; border: 1px solid #2a2a2a; }
+.hoodie-shape { position: absolute; inset: 24px 42px; border-radius: 110px 110px 50px 50px; background: var(--hoodie-color, #efefef); box-shadow: inset 0 20px 40px rgba(0,0,0,.22); }
+.hoodie-shape::before { content: ""; position: absolute; width: 56%; height: 22%; left: 22%; top: -9%; border-radius: 55% 55% 40% 40%; background: inherit; }
+.print-net-label { position: absolute; top: 95px; left: 50%; transform: translateX(-50%); font-size: .78rem; color: #cfd8c0; letter-spacing: .04rem; }
+.canvas-wrapper {
+  position: absolute; top: 125px; left: 50%; transform: translateX(-50%);
+  border: 2px dashed rgba(136,255,0,.45); width: 300px; height: 360px; background: rgba(0,0,0,.12);
+}
+
+.price { margin: .2rem 0 .4rem; color: var(--lime); font-size: 2rem; }
+.breakdown { color: #bbb; font-size: .9rem; margin-bottom: .9rem; min-height: 42px; }
+.field-label { display: block; margin-bottom: .35rem; }
+select { width: 100%; padding: .65rem; border-radius: 8px; border: 1px solid #333; background: #222; color: #fff; }
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; margin: .75rem 0; }
+.btn { width: 100%; border: 0; border-radius: 8px; padding: .78rem; font-weight: 700; cursor: pointer; background: var(--lime); color: #000; }
+.btn.secondary { background: #2a2a2a; color: #fff; border: 1px solid #3a3a3a; text-align: center; }
+.btn.ghost { background: transparent; border: 1px solid var(--lime); color: var(--lime); margin-bottom: .5rem; }
+.btn.buy { background: #25d366; color: #fff; margin-top: .45rem; }
+.btn.danger { background: #661d1d; color: #fff; border: 1px solid #832727; }
+.toggle-row { display: flex; gap: .55rem; align-items: center; margin: .65rem 0 .8rem; }
+.cart-box { margin-top: .9rem; padding-top: .6rem; border-top: 1px solid #313131; }
+#cart-items { margin: .5rem 0 0; padding-left: 1.1rem; font-size: .9rem; color: #d8d8d8; max-height: 110px; overflow: auto; }
+
+dialog { border: 0; border-radius: 12px; width: min(920px, 92vw); background: #111; color: #fff; }
+dialog::backdrop { background: rgba(0,0,0,.8); }
+.mockup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.mockup-card { position: relative; height: 300px; border: 1px solid #333; border-radius: 12px; overflow: hidden; background: #202020; }
+.mockup-hoodie { position: absolute; inset: 22px 26px; border-radius: 90px 90px 36px 36px; background: var(--hoodie-color, #efefef); }
+.mockup-hoodie::before { content:""; position:absolute; width:56%; height:22%; left:22%; top:-9%; border-radius:55% 55% 40% 40%; background: inherit; }
+.mockup-card img { position: absolute; width: 42%; left: 50%; transform: translateX(-50%); top: 38%; opacity: .94; }
+
+@media (max-width: 980px) {
+  .main-container { grid-template-columns: 1fr; }
+  .mockup-grid { grid-template-columns: 1fr; }
+}
