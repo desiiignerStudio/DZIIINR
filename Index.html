@@ -1,71 +1,70 @@
-!DOCTYPE html
-html lang=en
-head
-    meta charset=UTF-8
-    meta name=viewport content=width=device-width, initial-scale=1.0
-    titleDziiinr Studio  SA Custom Clothingtitle
-    link rel=stylesheet href=style.css
-    script src=httpscdnjs.cloudflare.comajaxlibsfabric.js5.3.1fabric.min.jsscript
-head
-body
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DZIIINR Studio | SA Custom Clothing</title>
+    <link rel="stylesheet" href="Style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+  </head>
+  <body>
+    <div id="splash-screen">
+      <div class="logo-container">
+        <h1 class="logo-text">DZ<span class="lime">III</span>NR</h1>
+        <div class="loader-bar"></div>
+      </div>
+    </div>
 
-div id=splash-screen
-    div class=logo-container
-        h1 class=logo-textDZspan class=limespanNRh1
-        div class=loader-bardiv
-    div
-div
+    <nav class="navbar">
+      <div class="nav-logo">DZIIINR</div>
+      <div class="nav-tag">ZAR Studio</div>
+    </nav>
 
-nav class=navbar
-    div class=nav-logoDZIIINRdiv
-    div class=nav-tagZAR Studiodiv
-nav
+    <div class="main-container">
+      <div class="product-view">
+        <div class="view-switcher">
+          <button id="front-btn" class="toggle-btn active" onclick="switchView('front')">FRONT</button>
+          <button id="back-btn" class="toggle-btn" onclick="switchView('back')">BACK</button>
+        </div>
+        <div class="garment-container">
+          <img id="garment-base" src="https://i.imgur.com/9l8W6e8.png" alt="Hoodie Base" />
+          <div class="canvas-wrapper">
+            <canvas id="design-canvas" width="300" height="400"></canvas>
+          </div>
+        </div>
+      </div>
 
-div class=main-container
-    div class=product-view
-        div class=view-switcher
-            button id=front-btn class=toggle-btn active onclick=switchView('front')FRONTbutton
-            button id=back-btn class=toggle-btn onclick=switchView('back')BACKbutton
-        div
-        div class=garment-container
-            img id=garment-base src=httpsi.imgur.comyour-white-hoodie-mask.png alt=Hoodie Base
-            div class=canvas-wrapper
-                canvas id=design-canvas width=300 height=400canvas
-            div
-        div
-    div
+      <div class="controls">
+        <div class="price-header">
+          <p class="final-total" id="display-price">R 450.00</p>
+          <div id="price-breakdown" class="breakdown-text">Included: Front Print</div>
+        </div>
 
-    div class=controls
-        div class=price-header
-            p class=final-total id=display-priceR 450.00p
-            div id=price-breakdown class=breakdown-textIncluded Front Printdiv
-        div
+        <div class="tool-section">
+          <button class="tool-btn" onclick="addText()">+ ADD TEXT</button>
+          <label class="tool-btn upload-label">
+            + UPLOAD PNG <input type="file" id="upload-design" hidden />
+          </label>
+        </div>
 
-        div class=tool-section
-            button class=tool-btn onclick=addText()+ ADD TEXTbutton
-            label class=tool-btn upload-label
-                + UPLOAD PNG input type=file id=upload-design hidden
-            label
-        div
+        <div class="tool-section" id="edit-tools" style="visibility: hidden">
+          <button class="edit-btn" onclick="removeBg()">REMOVE WHITE BG</button>
+          <button class="edit-btn delete" onclick="deleteObject()">DELETE LAYER</button>
+        </div>
 
-        div class=tool-section id=edit-tools style=visibilityhidden;
-            button class=edit-btn onclick=removeBg()REMOVE WHITE BGbutton
-            button class=edit-btn delete onclick=deleteObject()DELETE LAYERbutton
-        div
+        <div class="tool-section quality-check">
+          <label class="ai-toggle">
+            <input type="checkbox" id="ai-upscale-toggle" onchange="calculateFinalPrice()" />
+            <span class="slider"></span>
+          </label>
+          <span>AI Enhancement (R75)</span>
+        </div>
 
-        div class=tool-section quality-check
-            label class=ai-toggle
-                input type=checkbox id=ai-upscale-toggle onchange=calculateFinalPrice()
-                span class=sliderspan
-            label
-            spanAI Enhancement (R75)span
-        div
+        <button class="mockup-btn" onclick="openMockup()">VIEW 3D MOCKUP</button>
+        <button class="whatsapp-btn" onclick="sendWhatsAppOrder()">ORDER VIA WHATSAPP</button>
+      </div>
+    </div>
 
-        button class=mockup-btn onclick=openMockup()VIEW 3D MOCKUPbutton
-        button class=whatsapp-btn onclick=sendWhatsAppOrder()ORDER VIA WHATSAPPbutton
-    div
-div
-
-script src=app.jsscript
-body
-html
+    <script src="app.js"></script>
+  </body>
+</html>
